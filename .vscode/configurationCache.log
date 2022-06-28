@@ -1,0 +1,1 @@
+{"buildTargets":["boot","image","kernel","run/qemu"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

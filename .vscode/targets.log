@@ -1,0 +1,403 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun 27 13:36:34 2022
+
+# Variables
+
+# environment
+JAVA_HOME = /etc/java-config-2/current-system-vm
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# makefile (from 'config.mk', line 3)
+MODE = debug
+# environment
+STARSHIP_SESSION_KEY = 2591554221725811
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0b2b19b0-a914-4a52-81f4-701059516260.sock
+# environment
+VSCODE_CWD = /home/clemens/Projects/clecx
+# environment
+WINDOWID = 77594626
+# environment
+GCC_SPECS = 
+# environment
+GDM_LANG = en_GB.utf8
+# default
+MAKE_COMMAND := make
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/clemens/Projects/clecx
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+MAIL = /var/mail/clemens
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+ALACRITTY_SOCKET = /run/user/1000/Alacritty-:0-8377.sock
+# environment
+VSCODE_CODE_CACHE_PATH = /home/clemens/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# makefile (from 'config.mk', line 4)
+CARGOFLAGS = 
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/clemens/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/clemens/Projects/clecx
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = |lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'config.mk', line 2)
+VERSION = 0.1
+# makefile (from 'config.mk', line 5)
+IMAGE = bin/Clecx-$(VERSION)
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+OMF_PATH = /home/clemens/.local/share/omf
+# environment
+XDG_SESSION_DESKTOP = dwm
+# makefile (from 'build/kernel.mk', line 1)
+MAKEFILE_LIST := Makefile config.mk build/setup.mk build/boot.mk build/image.mk build/qemu.mk build/kernel.mk
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 8998
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+MANPAGER = manpager
+# automatic
+*F = $(notdir $*)
+# environment
+MANPATH = /etc/java-config-2/current-system-vm/man:/usr/share/gcc-data/x86_64-pc-linux-gnu/11.3.0/man:/usr/share/binutils-data/x86_64-pc-linux-gnu/2.37_p1/man:/etc/java-config-2/current-system-vm/man/:/usr/lib64/php8.1/man/:/usr/local/share/man:/usr/share/man:/usr/lib/rust/man:/usr/lib/llvm/14/share/man:/usr/lib/llvm/13/share/man
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-QlXLsP5RIE,guid=719d0117f0b6f1b6a974206862b96ea4
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+INFOPATH = /usr/share/gcc-data/x86_64-pc-linux-gnu/11.3.0/info:/usr/share/binutils-data/x86_64-pc-linux-gnu/2.37_p1/info:/usr/share/info:/usr/share/info/emacs-27
+# makefile
+SHELL = /bin/sh
+# makefile (from 'build/qemu.mk', line 1)
+QEMUFLAGS = -drive file=$(IMAGE),format=raw -m 512M -enable-kvm -cpu host -machine q35,accel=kvm:tcg -drive if=pflash,format=raw,unit=0,file=res/OVMF/OVMF_CODE.fd,readonly=on -drive if=pflash,format=raw,unit=1,file=res/OVMF/OVMF_VARS.fd -d int,cpu_reset -no-shutdown -no-reboot -smp 8 -net none -device isa-debug-exit,iobase=0xf4,iosize=0x04 -vga std
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 2
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/clemens/.elan/bin:/home/clemens/.local/bin:/home/clemens/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:/usr/lib/llvm/14/bin:/usr/lib/llvm/13/bin:/usr/lib64/julia-1.7.3/bin
+# default
+MAKEFILES := 
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?F = $(notdir $?)
+# environment
+GSETTINGS_BACKEND = dconf
+# environment
+XDG_SEAT = seat0
+# environment
+JAVAC = /etc/java-config-2/current-system-vm/bin/javac
+# environment
+ALACRITTY_LOG = /tmp/Alacritty-8377.log
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.cfg=00;32:*.conf=00;32:*.diff=00;32:*.doc=00;32:*.ini=00;32:*.log=00;32:*.patch=00;32:*.pdf=00;32:*.ps=00;32:*.tex=00;32:*.txt=00;32:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+LESS = -R -M --shift 5
+# environment
+DESKTOP_SESSION = dwm
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = clemens
+# environment
+VBOX_APP_HOME = /usr/lib64/virtualbox
+# environment
+CONFIG_PROTECT_MASK = /etc/sandbox.d /etc/php/cli-php8.1/ext-active/ /etc/php/cgi-php8.1/ext-active/ /etc/php/apache2-php8.1/ext-active/ /etc/php/fpm-php8.1/ext-active/ /etc/php/phpdbg-php8.1/ext-active/ /etc/fonts/fonts.conf /etc/gentoo-release /etc/terminfo /etc/dconf /etc/ca-certificates.conf /etc/revdep-rebuild
+# environment
+CONFIG_PROTECT = /usr/share/maven-bin-3.8/conf /usr/share/gnupg/qualified.txt /usr/share/config
+# environment
+XDG_VTNR = 7
+# makefile
+.DEFAULT_GOAL := boot
+# makefile (from 'config.mk', line 1)
+ARCH = x86_64
+# environment
+EDITOR = emacs -nw
+# environment
+DISPLAY = :0
+# environment
+GTK_MODULES = canberra-gtk-module
+# environment
+USER = clemens
+# default
+MAKE_VERSION := 4.3
+# environment
+STARSHIP_SHELL = fish
+# environment
+PAGER = /usr/bin/less
+# environment
+_ = /usr/bin/make
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+COLORTERM = truecolor
+# environment
+LSP_USE_PLISTS = true
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/clemens
+# environment
+JDK_HOME = /etc/java-config-2/current-system-vm
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-0e2d95b6-1.67.2-main.sock
+# environment
+TERM = alacritty
+# environment
+XDG_SESSION_ID = 4
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/clemens
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+GDMSESSION = dwm
+# environment
+OMF_CONFIG = /home/clemens/.config/omf
+# variable set hash-table stats:
+# Load=117/1024=11%, Rehash=0, Collisions=9/160=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 28, inode 16297824): 18 files, no impossibilities.
+
+# 18 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+.ONESHELL:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+build/image.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-14 16:38:36.36036818
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-14 16:31:19.250358221
+#  File has been updated.
+#  Successfully updated.
+
+run/qemu:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'build/qemu.mk', line 19):
+	qemu-system-$(ARCH) $(QEMUFLAGS)
+
+# Not a target:
+build/boot.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-15 19:25:37.473910074
+ 
+#  File has been updated.
+#  Successfully updated.
+
+kernel:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'build/kernel.mk', line 5):
+	cd kernel
+	cargo build --target ../build/targets/$(ARCH)/kernel.json $(CARGOFLAGS)
+	cd ..
+	cp target/kernel/$(MODE)/kernel bin/clecx
+	strip bin/clecx
+
+boot:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'build/boot.mk', line 5):
+	cd boot
+	cargo build --target ../build/targets/$(ARCH)/boot.json $(CARGOFLAGS)
+	cd ..
+	cp target/boot/$(MODE)/boot.efi bin/BOOTX64.EFI
+	strip bin/BOOTX64.EFI
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+config.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-14 14:05:15.090158034
+#  File has been updated.
+#  Successfully updated.
+
+image:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'build/image.mk', line 2):
+	dd if=/dev/zero of=$(IMAGE) bs=512 count=93750
+	mkfs.vfat -F32 $(IMAGE)
+	mmd -i $(IMAGE) ::/EFI
+	mmd -i $(IMAGE) ::/EFI/BOOT
+	mcopy -i $(IMAGE) bin/BOOTX64.EFI ::/EFI/BOOT
+	mcopy -i $(IMAGE) scripts/startup.nsh ::
+	mcopy -i $(IMAGE) bin/clecx ::
+	mcopy -i $(IMAGE) res/font.psf ::
+	mcopy -i $(IMAGE) res/FONT_LICENSE ::
+
+# Not a target:
+build/setup.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-14 14:05:15.090158034
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/kernel.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-15 19:25:39.237243447
+#  File has been updated.
+#  Successfully updated.
+
+.PHONY: boot kernel
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+build/qemu.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-16 18:03:15.943938436
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=16/1024=2%, Rehash=0, Collisions=0/38=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 31 / storage = 270 B / avg = 8 B
+# current buf: size = 8162 B / used = 270 B / count = 31 / avg = 8 B
+
+# strcache performance: lookups = 56 / hit rate = 44%
+# hash-table stats:
+# Load=31/8192=0%, Rehash=0, Collisions=0/56=0%
+# Finished Make data base on Mon Jun 27 13:36:34 2022
+
+ 
