@@ -21,7 +21,7 @@ pub enum RsdpError {
 }
 
 #[repr(packed)]
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct RsdpWrapper(u64, usize);
 
 impl RsdpWrapper {

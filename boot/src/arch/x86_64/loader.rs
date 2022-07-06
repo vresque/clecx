@@ -1,3 +1,5 @@
+use core::mem::size_of;
+
 use bkshared::{
     graphics::{Psf1Font, Psf1Header, PSF1_MAGIC},
     MIB, PAGE_SIZE,
@@ -8,10 +10,11 @@ use efi::{
     status::{EfiResult, Status},
     WString,
 };
+use elf::Header;
 
 use super::alloc::zeroed;
 
-pub fn load_kernel(name: &str) -> EfiResult<&mut [u8]> {
+pub fn load_kernel(name: &str) -> EfiResult<(&mut [u8], u64)> {
     let mut file = Searcher::find(name)?;
 
     let length = file.get_file_info()?.file_size as usize;
@@ -29,7 +32,12 @@ pub fn load_kernel(name: &str) -> EfiResult<&mut [u8]> {
         }
     }
 
-    if b"\x7FELF" != &kernel_bytes[..4] {
+    let elf: Header<u64> = unsafe {
+        let bytes = &kernel_bytes[..size_of::<Header<u64>>()];
+        core::ptr::read(bytes.as_ptr() as *const _)
+    };
+
+    if b"\x7FELF" != &elf.magic {
         println!(
             "Kernel has bad elf magic: Expected \x7FELF, found {:#X?}",
             &kernel_bytes[..4]
@@ -41,7 +49,7 @@ pub fn load_kernel(name: &str) -> EfiResult<&mut [u8]> {
 
     println!("Loaded Kernel!");
 
-    Ok(kernel_bytes)
+    Ok((kernel_bytes, elf.entry))
 }
 
 pub fn load_font(path: &str) -> EfiResult<Psf1Font> {

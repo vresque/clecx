@@ -30,10 +30,9 @@ pub fn main() -> EfiResult<!> {
     println!("Launching architecture specific booting process...");
     println!("Finding all RSDP pointers");
     let rsdp = find_rsdps()?;
-    let kernel_bytes = load_kernel("clecx")?;
+    let (kernel_bytes, kernel_entry) = load_kernel("clecx")?;
     let kernel_base = kernel_bytes.as_ptr() as u64;
     let kernel_size = kernel_bytes.len();
-    let kernel_entry = unsafe { core::ptr::read((kernel_base + 0x18) as *const u64) };
     println!(
         "Found Clecx Kernel: Allocated at {:x?}, size of {} bytes and entry at {:x?}",
         kernel_base, kernel_size, kernel_entry
@@ -73,6 +72,7 @@ pub fn main() -> EfiResult<!> {
     boot.set_vaddr_map(PHYSICAL_OFFSET);
     core::mem::forget(boot);
 
+
     let mut handover = Handover {
         magic: 0xC1EC7,
         framebuffer,
@@ -83,8 +83,14 @@ pub fn main() -> EfiResult<!> {
         mmap,
     };
 
+
+
+
     //switch_stack(stack_base);
     let kmain: extern "sysv64" fn(*mut Handover) -> ! =
         unsafe { core::mem::transmute(kernel_entry) };
+
     kmain(&mut handover);
+
+    loop {}
 }

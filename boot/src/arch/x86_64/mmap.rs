@@ -109,6 +109,6 @@ pub fn locate_memory_map() -> EfiResult<(MemoryMap, BootloaderMMap)> {
     boot.iterator_idx = 0;
 
     let mmap = MemoryMap { members: map };
-
+    println!("Found memory map");
     Ok((mmap, boot))
 }

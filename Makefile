@@ -4,3 +4,4 @@ include build/boot.mk
 include build/image.mk
 include build/qemu.mk
 include build/kernel.mk
+include build/clean.mk

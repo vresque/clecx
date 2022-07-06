@@ -44,7 +44,7 @@ impl Stack {
     }
 }
 
-#[repr(packed)]
+#[repr(packed, C)]
 #[derive(Copy, Clone)]
 pub struct Handover {
     pub magic: u64, // 0xC1EC7

@@ -5,7 +5,7 @@
     "target-endian": "little",
     "target-pointer-width": "64",
     "target-c-int-width": "32",
-    "os": "esque",
+    "os": "clecx",
     "executables": true,
     "linker-flavor": "ld.lld",
     "code-model": "kernel",
@@ -14,7 +14,7 @@
         "ld.lld": [
             "--gc-sections",
             "--script=build/targets/x86_64/kernel.lds",
-            "-ekmain"
+            "-emain"
         ]
     },
     "panic-strategy": "abort",
