@@ -200,7 +200,7 @@ impl Pager {
     pub fn map_font(&mut self, font: &Psf1Font) -> EfiResult<()> {
         assert!(self.level == PagerLevel::PML4);
 
-        if font.buffer + font.buffer_size as u64 <= 0x2_0000_0000 {
+        if font.buffer as u64 + font.buffer_size as u64 <= 0x2_0000_0000 {
             return Ok(()); /* Framebuffer already mapped */
         }
         assert!(font.buffer % 0x20_0000 == 0);
@@ -230,9 +230,9 @@ impl Pager {
             assert!(pdp[pdp_idx] == 0);
             pdp.place_pager(pdp_idx, &pd);
             while sum < font.buffer_size && pd_idx < pd.buffer.len() {
-                let addr = font.buffer + sum as u64;
+                let addr = font.buffer as u64 + sum as u64;
                 assert!(pd[pd_idx] == 0);
-                pd[pd_idx] = addr | 1 << 7 | 1 << 1 | 1;
+                pd[pd_idx] = addr as u64 | 1 << 7 | 1 << 1 | 1;
                 sum += 0x20_0000;
                 pd_idx += 1;
             }
@@ -248,7 +248,7 @@ impl Pager {
     pub fn map_framebuffer(&mut self, framebuffer: &Framebuffer) -> EfiResult<()> {
         assert!(self.level == PagerLevel::PML4);
 
-        if framebuffer.base + framebuffer.size as u64 <= 0x2_0000_0000 {
+        if framebuffer.base as u64 + framebuffer.size as u64 <= 0x2_0000_0000 {
             return Ok(()); /* Framebuffer already mapped */
         }
         assert!(framebuffer.base % 0x20_0000 == 0);
@@ -278,9 +278,9 @@ impl Pager {
             assert!(pdp[pdp_idx] == 0);
             pdp.place_pager(pdp_idx, &pd);
             while sum < framebuffer.size && pd_idx < pd.buffer.len() {
-                let addr = framebuffer.base + sum as u64;
+                let addr = framebuffer.base as u64 + sum as u64;
                 assert!(pd[pd_idx] == 0);
-                pd[pd_idx] = addr | 1 << 7 | 1 << 1 | 1;
+                pd[pd_idx] = addr as u64 | 1 << 7 | 1 << 1 | 1;
                 sum += 0x20_0000;
                 pd_idx += 1;
             }

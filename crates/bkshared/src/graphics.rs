@@ -1,5 +1,6 @@
 pub const PSF1_MAGIC: [u8; 2] = [0x36, 0x04];
 pub const PSF1_DRAW_MASK: usize = 0b10000000;
+pub const PSF1_PIXELS_PER_CHARACTER: usize = 16;
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
@@ -15,11 +16,11 @@ pub enum PixelFormat {
 #[derive(Debug, Copy, Clone)]
 pub struct Framebuffer {
     pub format: PixelFormat,
-    pub base: u64,
+    pub base: usize,
     pub size: usize,
     pub width: u64,
     pub height: u64,
-    pub pixels_per_scanline: u64,
+    pub stride: u64,
 }
 
 impl Framebuffer {
@@ -32,7 +33,7 @@ impl Framebuffer {
         unsafe {
             core::slice::from_raw_parts_mut(
                 self.base as *mut u32,
-                (self.width * self.pixels_per_scanline) as usize,
+                (self.width * self.stride) as usize,
             )
         }
     }
@@ -50,7 +51,7 @@ pub struct Psf1Header {
 #[derive(Default, Copy, Clone)]
 pub struct Psf1Font {
     pub header: Psf1Header,
-    pub buffer: u64,
+    pub buffer: usize,
     pub buffer_size: usize,
 }
 

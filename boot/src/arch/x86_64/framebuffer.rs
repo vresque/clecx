@@ -5,11 +5,11 @@ pub fn find_framebuffer() -> EfiResult<Framebuffer> {
     let gop = GraphicsOutput::locate()?;
     Ok(Framebuffer {
         format: PixelFormat::BitMask, // TODO
-        base: gop.0.mode.base as u64,
+        base: gop.0.mode.base,
         size: gop.0.mode.size,
         width: gop.0.mode.info.horizontal_res as u64,
         height: gop.0.mode.info.vertical_res as u64,
-        pixels_per_scanline: gop.0.mode.info.stride as u64,
+        stride: gop.0.mode.info.stride as u64,
     })
 }
 

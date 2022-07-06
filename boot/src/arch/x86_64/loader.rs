@@ -76,7 +76,7 @@ pub fn load_font(path: &str) -> EfiResult<Psf1Font> {
         let ptr = zeroed(glyph_buffer_size)?;
         let slice = core::slice::from_raw_parts_mut(ptr as *mut u8, glyph_buffer_size);
         file.read(slice);
-        ptr as u64
+        ptr
     };
 
     Ok(Psf1Font {

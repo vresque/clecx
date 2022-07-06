@@ -1,6 +1,6 @@
-use core::mem::MaybeUninit;
+use core::{mem::MaybeUninit};
 
-use bkshared::graphics::{Framebuffer, Psf1Font};
+use bkshared::graphics::{Framebuffer, Psf1Font, PSF1_PIXELS_PER_CHARACTER, PSF1_DRAW_MASK};
 use sync::Mutex;
 
 use super::{color::Color, resolution::Resolution};
@@ -36,7 +36,7 @@ impl DebugFramebuffer {
 
 
     pub const fn resolution(&self) -> Resolution {
-        Resolution::new(self.framebuffer.width, self.framebuffer.height, self.framebuffer.pixels_per_scanline)
+        Resolution::new(self.framebuffer.width, self.framebuffer.height, self.framebuffer.stride)
     }
 
     pub unsafe fn clear_screen<T>(&mut self, color: T)
@@ -49,10 +49,104 @@ impl DebugFramebuffer {
 
         for vertical in 0..resolution.height {
             let line = {
-                let base = self.framebuffer.base + (vertical * (self.framebuffer.pixels_per_scanline * self.bytes_per_pixel as u64));
-                core::slice::from_raw_parts_mut(base as *mut u32, self.framebuffer.pixels_per_scanline as usize * self.bytes_per_pixel as usize)
+                let base = self.framebuffer.base as u64 + (vertical * (self.framebuffer.stride * self.bytes_per_pixel as u64));
+                core::slice::from_raw_parts_mut(base as *mut u32, self.framebuffer.stride as usize * self.bytes_per_pixel as usize)
             };
             line.into_iter().for_each(|e| *e = color)
         }
     }
+
+    pub fn print(&mut self, text: &str) {
+        for chr in text.chars() {
+            match chr {
+                c if chr.is_ascii() => self.put_character(c),
+                _ => {}
+            }
+        }
+    }
+
+    pub fn put_character(&mut self, character: char) {
+        match character {
+            '\n' | '\r' => {
+                self.draw_new_line()
+            }
+            '\t' => {
+                self.draw_tab()
+            }
+            char => {
+                self.draw_ascii_character(char);
+                if self.framebuffer.width <= self.column as u64 {
+                    self.draw_new_line()
+                } else {
+                    self.column += 8;
+                }
+            }
+        }
+    }
+
+    fn draw_new_line(&mut self) {
+        self.column = 0;
+        self.row += 16;
+        
+        if (self.row + 16) as u64 >= self.framebuffer.height - 32 {
+
+        }
+
+    }
+
+
+    fn draw_tab(&mut self) {
+        for i in 0..12 { self.put_character(' '); }
+    }
+
+    fn draw_ascii_character(&mut self, character: char) {
+        let character_size = self.font.header.charsize;
+        let stride = self.framebuffer.stride;
+        let font = unsafe {
+            let offset = (character as usize) * (character_size as usize);
+            let base = self.font.buffer + offset;
+            core::slice::from_raw_parts((base as *const u8), PSF1_PIXELS_PER_CHARACTER)
+        };
+
+        let framebuffer = self.framebuffer.buffer_mut();
+
+        for (y, font_index) in (self.row..(self.row + 16)).zip(0..PSF1_PIXELS_PER_CHARACTER) {
+            for x in self.column..(self.column + 8) {
+                let offset = x as usize + (y as usize * stride as usize);
+                if font[font_index] as usize & (PSF1_DRAW_MASK >> (x - self.column)) > 0 {
+                    framebuffer[offset] = self.foreground;
+                } else {
+                    framebuffer[offset] = self.background;
+                }
+            }
+        }
+    }
+}
+
+impl core::fmt::Write for DebugFramebuffer {
+    fn write_char(&mut self, c: char) -> core::fmt::Result {
+        self.put_character(c);
+        Ok(())
+    }
+
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        self.print(s);
+        Ok(())
+    }
+}
+
+#[macro_export]
+macro_rules! kprintln {
+    () => ({
+        use crate::debug::framebuffer::FRAMEBUFFER;
+        use core::fmt::Write;
+
+        unsafe { FRAMEBUFFER.lock().as_mut().unwrap().write_str("\n") };
+    });
+    ($($arg:tt)*) => ({
+        use crate::debug::framebuffer::FRAMEBUFFER;
+        use core::fmt::Write;
+
+        unsafe { FRAMEBUFFER.lock().as_mut().unwrap().write_fmt(format_args_nl!($($arg)*)) };
+    })
 }
