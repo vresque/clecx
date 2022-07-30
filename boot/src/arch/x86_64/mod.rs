@@ -72,7 +72,6 @@ pub fn main() -> EfiResult<!> {
     boot.set_vaddr_map(PHYSICAL_OFFSET);
     core::mem::forget(boot);
 
-
     let mut handover = Handover {
         magic: 0xC1EC7,
         framebuffer,
@@ -82,9 +81,6 @@ pub fn main() -> EfiResult<!> {
         rsdp: mgr,
         mmap,
     };
-
-
-
 
     //switch_stack(stack_base);
     let kmain: extern "sysv64" fn(*mut Handover) -> ! =

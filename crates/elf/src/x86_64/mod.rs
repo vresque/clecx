@@ -1,6 +1,5 @@
 // https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 
-
 #[repr(C)]
 #[derive(Debug)]
 pub struct Header<Arch> {
@@ -21,5 +20,5 @@ pub struct Header<Arch> {
     pub phnum: u16,
     pub shentsize: u16,
     pub shnum: u16,
-    pub shstrndx: u16
+    pub shstrndx: u16,
 }
