@@ -1,12 +1,14 @@
 use core::{mem::MaybeUninit};
 
-use bkshared::graphics::{Framebuffer, Psf1Font, PSF1_PIXELS_PER_CHARACTER, PSF1_DRAW_MASK};
+use bkshared::graphics::{Framebuffer, Psf1Font, PSF1_PIXELS_PER_CHARACTER, PSF1_DRAW_MASK, LINE_HEIGHT, LINE_WIDTH};
 use sync::Mutex;
+
+use crate::memutil::memset32;
 
 use super::{color::Color, resolution::Resolution};
 
 pub static mut FRAMEBUFFER: Mutex<Option<DebugFramebuffer>> = Mutex::new(None);
-
+extern crate compiler_builtins;
 
 
 pub struct DebugFramebuffer {
@@ -39,7 +41,7 @@ impl DebugFramebuffer {
         Resolution::new(self.framebuffer.width, self.framebuffer.height, self.framebuffer.stride)
     }
 
-    pub unsafe fn clear_screen<T>(&mut self, color: T)
+    pub fn clear_screen<T>(&mut self, color: T)
     where
         T: Into<u32>,
     {
@@ -48,7 +50,7 @@ impl DebugFramebuffer {
 
 
         for vertical in 0..resolution.height {
-            let line = {
+            let line = unsafe {
                 let base = self.framebuffer.base as u64 + (vertical * (self.framebuffer.stride * self.bytes_per_pixel as u64));
                 core::slice::from_raw_parts_mut(base as *mut u32, self.framebuffer.stride as usize * self.bytes_per_pixel as usize)
             };
@@ -88,10 +90,27 @@ impl DebugFramebuffer {
         self.column = 0;
         self.row += 16;
         
-        if (self.row + 16) as u64 >= self.framebuffer.height - 32 {
-
+        if (self.row + 16) as u64 >= self.framebuffer.height {
+            unsafe { self.scroll_one_line() }
         }
+    }
 
+    unsafe fn scroll_one_line(&mut self) {
+        use compiler_builtins::mem::{memcpy, memset, memmove};
+        let top_row_end = (self.framebuffer.stride as usize * LINE_HEIGHT) * 4;
+        let top_row_size = (self.framebuffer.stride as usize * 4 as usize) * LINE_HEIGHT;
+
+
+        let base_without_top_row =
+            self.framebuffer.base + top_row_size;
+
+        // Resetting the first row of the framebuffer
+        memset(self.framebuffer.base as *mut u8, 0, top_row_size);
+        //// Move the rest of the framebuffer to the top
+        memmove(self.framebuffer.base as *mut u8, base_without_top_row as *mut u8, self.framebuffer.size - top_row_size);
+        //
+        memset32((self.framebuffer.base + (self.framebuffer.size - top_row_size)) as *mut u8, self.foreground, top_row_size);
+        self.row -= 16;
     }
 
 

@@ -12,8 +12,6 @@ QEMUFLAGS += \
 	-smp 8 \
 	-net none \
 	-device isa-debug-exit,iobase=0xf4,iosize=0x04  \
-	-vga std
-
-
+	-vga virtio
 run/qemu:
 	qemu-system-$(ARCH) $(QEMUFLAGS)

@@ -1,6 +1,8 @@
 pub const PSF1_MAGIC: [u8; 2] = [0x36, 0x04];
 pub const PSF1_DRAW_MASK: usize = 0b10000000;
 pub const PSF1_PIXELS_PER_CHARACTER: usize = 16;
+pub const LINE_HEIGHT: usize = 16;
+pub const LINE_WIDTH: usize = 8;
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
