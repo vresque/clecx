@@ -3,7 +3,7 @@ use bkshared::Handover;
 use crate::{
     debug::{
         color::Color,
-        framebuffer::{DebugFramebuffer, FRAMEBUFFER},
+        framebuffer::{DebugFramebuffer, FRAMEBUFFER}, welcome::{welcome, Stage},
     },
     kprintln, println,
 };
@@ -14,7 +14,7 @@ extern "sysv64" fn main(handover: *mut Handover) -> ! {
     let mut framebuffer = DebugFramebuffer::new(
         handover.framebuffer,
         handover.font,
-        Color::LightGreen,
+        Color::White,
         Color::Black,
         4,
     );
@@ -23,11 +23,7 @@ extern "sysv64" fn main(handover: *mut Handover) -> ! {
         *FRAMEBUFFER.lock() = Some(framebuffer);
     }
 
-    println!(info:" Eh");
-    println!(error: "Oh no!");
-    println!(warning: "Warning!");
-    println!(success: "Finally!");
-    println!(fatal: "This is bad");
+    welcome(Stage::Launching);
 
     crate::main();
     loop {}
