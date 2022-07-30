@@ -9,5 +9,5 @@ pub mod memutil;
 pub mod panic;
 
 pub fn main() {
-    welcome(Stage::Ready);
+    debug::welcome::welcome(debug::welcome::Stage::Ready);
 }

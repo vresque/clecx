@@ -301,4 +301,45 @@ macro_rules! println {
             }
         }
     });
+
+    (dump: $($arg:tt)*) => ({
+        use crate::{kprint, kprintln, scoped_color_change};
+        kprint!(">>: ");
+        kprintln!($($arg)*)
+    });
+
+}
+
+#[macro_export]
+macro_rules! prepare_dump {
+    (dumping $name:expr; || $bdy:block) => {
+        use crate::{scoped_color_change, kprint};
+        use crate::debug::color::Color;
+
+        scoped_color_change! {
+            background: Color::Black;
+            foreground: Color::White;
+            body: {
+                kprint!("---- DUMPING ");
+                scoped_color_change! {
+                    background: Color::Black;
+                    foreground: Color::LightGreen;
+                    body: {
+                        kprint!("\"{}\"", $name);
+                    }
+                }
+                kprintln!(" ----");
+                { $bdy }
+                kprint!("---- DUMPING OF ");
+                scoped_color_change! {
+                    background: Color::Black;
+                    foreground: Color::LightGreen;
+                    body: {
+                        kprint!("\"{}\"", $name);
+                    }
+                }
+                kprintln!(" FINISHED ----");
+            }
+        }
+    }
 }
