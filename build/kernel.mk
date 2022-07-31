@@ -3,10 +3,11 @@
 .PHONY: kernel
 kernel:
 	cd kernel
-	cargo build --target ../build/targets/$(ARCH)/kernel.json $(CARGOFLAGS)
+	cargo build --profile $(MODE) --target ../build/targets/$(ARCH)/kernel.json $(CARGOFLAGS)
 	cd ..
-	cp target/kernel/$(MODE)/kernel bin/clecx
+	cp target/kernel/$(FOLDER)/kernel bin/clecx
 	strip bin/clecx
+
 
 
 kernel/asm:

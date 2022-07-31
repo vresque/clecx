@@ -4,3 +4,11 @@ members = [
     "boot",
     "kernel"
 ]
+
+[profile.release]
+opt-level = 3
+strip = true
+lto = true
+
+[profile.dev]
+opt-level = 3
