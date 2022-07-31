@@ -1,9 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/clemens/Projects/clecx'
-cd boot
-cargo build --target ../build/targets/x86_64/boot.json 
-cd ..
-cp target/boot/debug/boot.efi bin/BOOTX64.EFI
-strip bin/BOOTX64.EFI
+mkdir bin
 make: Leaving directory '/home/clemens/Projects/clecx'
  

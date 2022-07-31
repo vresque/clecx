@@ -46,7 +46,7 @@ SECTIONS {
         TBSS_END = .;
     }
 
-    END = .;
+    KERNEL_END = .;
 
     /DISCARD/ : {
         *(.comment*)

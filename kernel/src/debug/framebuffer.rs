@@ -313,7 +313,7 @@ macro_rules! println {
 #[macro_export]
 macro_rules! prepare_dump {
     (dumping $name:expr; || $bdy:block) => {
-        use crate::{scoped_color_change, kprint};
+        use crate::{scoped_color_change, kprint, kprintln};
         use crate::debug::color::Color;
 
         scoped_color_change! {

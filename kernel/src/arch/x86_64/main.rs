@@ -5,8 +5,9 @@ use crate::{
         color::Color,
         framebuffer::{DebugFramebuffer, FRAMEBUFFER}, welcome::{welcome, Stage},
     },
-    kprintln, println, prepare_dump,
 };
+
+
 
 #[no_mangle]
 extern "sysv64" fn main(handover: *mut Handover) -> ! {
@@ -24,13 +25,8 @@ extern "sysv64" fn main(handover: *mut Handover) -> ! {
     }
 
     welcome(Stage::Launching);
-
-    prepare_dump! {
-        dumping "Nothing";
-        || {
-            println!(dump: "Lmao... I guess???");
-        }
-    }
+    
+    
 
     crate::main();
     loop {}

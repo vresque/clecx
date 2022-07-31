@@ -1,3 +1,9 @@
+pub use arch::mem::*;
+pub use arch::mem::{addr::*, page::*};
+
+use crate::arch;
+
+
 extern crate compiler_builtins;
 
 // Memset for u32
