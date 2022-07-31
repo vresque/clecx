@@ -1,7 +1,6 @@
 use bkshared::mmap::MemoryMap;
 
 use crate::prepare_dump;
-use crate::println;
 use bkshared::PAGE_SIZE;
 
 pub fn dump_memory_map(mmap: MemoryMap) {

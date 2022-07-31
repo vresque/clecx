@@ -5,3 +5,4 @@ target/
 *.out
 *.
 **/Cargo.lock
+.vscode
