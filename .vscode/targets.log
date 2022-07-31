@@ -6,13 +6,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 31 12:13:26 2022
+# Make data base, printed on Sun Jul 31 15:37:35 2022
 
 # Variables
 
 # environment
 GDK_BACKEND = x11
- 
 # environment
 LC_ALL = C
 # environment
@@ -20,9 +19,7 @@ NO_AT_BRIDGE = 1
 # makefile (from 'config.mk', line 3)
 MODE = debug
 # environment
-STARSHIP_SESSION_KEY = 5402808427854473
-# environment
-GJS_DEBUG_OUTPUT = stderr
+STARSHIP_SESSION_KEY = 1908311085151043
 # environment
 VSCODE_CWD = /home/clemens
 # environment
@@ -86,7 +83,7 @@ MAKEFILE_LIST := Makefile config.mk build/setup.mk build/boot.mk build/image.mk 
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 2843
+VSCODE_PID = 13154
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -114,8 +111,6 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 1
 # environment
 MAKELEVEL := 0
@@ -128,7 +123,7 @@ MAKEFILES :=
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = 6a0a8d090abb438fbde752b90354f489
+INVOCATION_ID = 18ab3b05644c4ed9ad410565588a2e7b
 # environment
 USERNAME = clemens
 # environment
@@ -147,16 +142,13 @@ ORIGINAL_XDG_CURRENT_DESKTOP = GNOME
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = clemens
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile
 .DEFAULT_GOAL := setup
 # environment
-SYSTEMD_EXEC_PID = 1862
+SYSTEMD_EXEC_PID = 2205
 # makefile (from 'config.mk', line 1)
 ARCH = x86_64
 # environment
- 
 EDITOR = /usr/bin/nano
 # environment
 DISPLAY = :0
@@ -169,13 +161,13 @@ MANAGERPID = 1704
 # environment
 STARSHIP_SHELL = fish
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2843
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3682
 # environment
 _ = /usr/bin/make
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-JOURNAL_STREAM = 8:33054
+JOURNAL_STREAM = 8:33307
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -201,7 +193,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 GDMSESSION = gnome
 # variable set hash-table stats:
-# Load=94/1024=9%, Rehash=0, Collisions=5/149=3%
+# Load=91/1024=9%, Rehash=0, Collisions=5/146=3%
 
 # Pattern-specific Variable Values
 
@@ -238,7 +230,6 @@ build/all.mk:
 #  File has been updated.
 #  Successfully updated.
 
- 
 setup:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -292,7 +283,6 @@ kernel:
 # + := 
 # automatic
 # % := 
- 
 # automatic
 # ^ := 
 # automatic
@@ -311,6 +301,7 @@ kernel:
 # Not a target:
 build/clean.mk:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-07-30 20:33:31.117910197
 #  File has been updated.
 #  Successfully updated.
@@ -340,7 +331,6 @@ all: kernel image
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 # Not a target:
@@ -384,7 +374,6 @@ build/setup.mk:
 # Not a target:
 build/kernel.mk:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-07-30 20:33:31.118910198
 #  File has been updated.
 #  Successfully updated.
@@ -426,6 +415,6 @@ build/qemu.mk:
 # strcache performance: lookups = 78 / hit rate = 50%
 # hash-table stats:
 # Load=39/8192=0%, Rehash=0, Collisions=0/78=0%
-# Finished Make data base on Sun Jul 31 12:13:26 2022
+# Finished Make data base on Sun Jul 31 15:37:35 2022
 
  
