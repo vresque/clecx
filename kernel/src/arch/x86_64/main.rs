@@ -26,8 +26,8 @@ extern "sysv64" fn main(handover: *mut Handover) -> ! {
 
     welcome(Stage::Launching);
     
-    
+    unsafe { FRAMEBUFFER.lock().as_mut().unwrap().clear_screen(Color::LightBlue); }
 
-    crate::main();
+    //crate::main();
     loop {}
 }

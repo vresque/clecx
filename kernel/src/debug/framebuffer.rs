@@ -5,7 +5,7 @@ use bkshared::graphics::{
 };
 use sync::Mutex;
 
-use crate::memutil::memset32;
+use crate::mem::memset32;
 
 use super::{color::Color, resolution::Resolution};
 
@@ -69,20 +69,23 @@ impl DebugFramebuffer {
     where
         T: Into<u32>,
     {
-        let resolution = self.resolution();
-        let color = color.into();
+        let size = self.framebuffer.size;
+        unsafe { memset32(self.framebuffer.base as *mut u8, color.into(), size); }
 
-        for vertical in 0..resolution.height {
-            let line = unsafe {
-                let base = self.framebuffer.base as u64
-                    + (vertical * (self.framebuffer.stride * self.bytes_per_pixel as u64));
-                core::slice::from_raw_parts_mut(
-                    base as *mut u32,
-                    self.framebuffer.stride as usize * self.bytes_per_pixel as usize,
-                )
-            };
-            line.into_iter().for_each(|e| *e = color)
-        }
+        // let resolution = self.resolution();
+        // let color = color.into();
+
+        // for vertical in 0..resolution.height {
+        //     let line = unsafe {
+        //         let base = self.framebuffer.base as u64
+        //             + (vertical * (self.framebuffer.stride * self.bytes_per_pixel as u64));
+        //         core::slice::from_raw_parts_mut(
+        //             base as *mut u32,
+        //             self.framebuffer.stride as usize * self.bytes_per_pixel as usize,
+        //         )
+        //     };
+        //     line.into_iter().for_each(|e| *e = color)
+        // }
     }
 
     pub fn print(&mut self, text: &str) {

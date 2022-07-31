@@ -50,3 +50,6 @@ pub use core::{
 #[doc(no_inline)]
 pub use core::concat_bytes;
 
+pub use core::prelude::v1::*;
+
+pub use core::slice;
