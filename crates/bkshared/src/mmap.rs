@@ -52,7 +52,7 @@ pub struct MemoryDescriptor {
 }
 
 #[repr(packed)]
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub struct MemoryMap {
     pub members: [MemoryDescriptor; 512],
 }

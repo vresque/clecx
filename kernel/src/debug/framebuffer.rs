@@ -12,6 +12,7 @@ use super::{color::Color, resolution::Resolution};
 pub static mut FRAMEBUFFER: Mutex<Option<DebugFramebuffer>> = Mutex::new(None);
 extern crate compiler_builtins;
 
+#[derive(Debug)]
 pub struct DebugFramebuffer {
     framebuffer: Framebuffer,
     font: Psf1Font,
@@ -139,7 +140,7 @@ impl DebugFramebuffer {
         //
         memset32(
             (self.framebuffer.base + (self.framebuffer.size - top_row_size)) as *mut u8,
-            self.foreground,
+            self.background,
             top_row_size,
         );
         self.row -= 16;

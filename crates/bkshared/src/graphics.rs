@@ -41,7 +41,7 @@ impl Framebuffer {
     }
 }
 
-#[derive(Default, Copy, Clone)]
+#[derive(Default, Copy, Clone, Debug)]
 #[repr(C)]
 pub struct Psf1Header {
     pub magic: [u8; 2],
@@ -50,7 +50,7 @@ pub struct Psf1Header {
 }
 
 #[repr(packed)]
-#[derive(Default, Copy, Clone)]
+#[derive(Default, Copy, Clone, Debug)]
 pub struct Psf1Font {
     pub header: Psf1Header,
     pub buffer: usize,

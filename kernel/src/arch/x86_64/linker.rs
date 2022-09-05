@@ -1,6 +1,6 @@
 use crate::linker_constants;
 
-linker_constants!{
+linker_constants! {
     KERNEL_OFFSET
     TEXT_START
     TEXT_END

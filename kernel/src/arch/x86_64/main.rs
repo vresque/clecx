@@ -24,10 +24,21 @@ extern "sysv64" fn main(handover: *mut Handover) -> ! {
         *FRAMEBUFFER.lock() = Some(framebuffer);
     }
 
-    welcome(Stage::Launching);
-    
-    unsafe { FRAMEBUFFER.lock().as_mut().unwrap().clear_screen(Color::LightBlue); }
+    #[derive(Debug)]
+    pub struct Tester {
+        pub a: u32,
+        pub b: u64,
+    }
 
+    let mut a = Tester { a: 0, b: 100 };
+    
+    for i in 0..100 {
+        a.a += i;
+        a.b += i as u64;
+        println!(error: "{:#?}", a);
+    }
+
+    welcome(Stage::Launching);
     //crate::main();
     loop {}
 }
